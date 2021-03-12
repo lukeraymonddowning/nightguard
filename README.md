@@ -2,6 +2,8 @@
 
 Set up Auth guards using Eloquent in seconds.
 
+[![Unit Tests](https://github.com/lukeraymonddowning/nightguard/actions/workflows/main.yml/badge.svg)](https://github.com/lukeraymonddowning/nightguard/actions/workflows/main.yml)
+
 ## Introduction
 
 Laravel guard provide a super convenient method of authorizing different areas
