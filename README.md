@@ -45,7 +45,7 @@ php artisan nightguard:model Administrator
 That was simple!
 
 With that out of the way, all that's left is to set up the guard. Head in to your
-`AppServiceProvider`, and add the following code to your `boot` method:
+`AuthServiceProvider`, and add the following code to your `boot` method:
 
 ```php
 public function boot() 
