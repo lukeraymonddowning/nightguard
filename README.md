@@ -22,7 +22,7 @@ with a single line of code!
 You can install Nightguard via composer:
 
 ```bash
-composer require lukeraymonddowning/nightguard;
+composer require lukeraymonddowning/nightguard
 ```
 
 ## Usage
