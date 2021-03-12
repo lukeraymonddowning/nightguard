@@ -23,9 +23,6 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-php-
 
-    - name: Authenticate Repman
-      run: composer config --global --auth http-basic.ricorocks-digital-agency.repo.repman.io token ${{ secrets.COMPOSER_AUTH }}
-
     - name: Install dependencies
       if: steps.composer-cache.outputs.cache-hit != 'true'
       run: composer install --prefer-dist --no-progress --no-suggest
