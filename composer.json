@@ -1,5 +1,5 @@
 {
-    "name": "lukeraymonddowning/nightshift",
+    "name": "lukeraymonddowning/nightguard",
     "description": "Set up Laravel Eloquent guards in seconds",
     "type": "library",
     "require": {
