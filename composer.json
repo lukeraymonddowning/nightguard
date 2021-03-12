@@ -28,5 +28,15 @@
             "name": "luke",
             "email": "lukeraymonddowning@gmail.com"
         }
-    ]
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Lukeraymonddowning\\Nightguard\\Providers\\NightguardServiceProvider"
+            ],
+            "aliases": {
+                "Nightguard": "Lukeraymonddowning\\Nightguard\\Facades\\Nightguard"
+            }
+        }
+    }
 }
