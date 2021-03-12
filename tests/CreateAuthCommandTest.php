@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Lukeraymonddowning\Nightshift\Tests;
+namespace Lukeraymonddowning\Nightguard\Tests;
 
 
 use Illuminate\Support\Facades\Artisan;

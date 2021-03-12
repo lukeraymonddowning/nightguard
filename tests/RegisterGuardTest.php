@@ -1,10 +1,10 @@
 <?php
 
-namespace Lukeraymonddowning\Nightshift\Tests;
+namespace Lukeraymonddowning\Nightguard\Tests;
 
 
 use Illuminate\Foundation\Auth\User;
-use Lukeraymonddowning\Nightshift\Facades\Nightguard;
+use Lukeraymonddowning\Nightguard\Facades\Nightguard;
 use Route;
 
 class RegisterGuardTest extends TestCase

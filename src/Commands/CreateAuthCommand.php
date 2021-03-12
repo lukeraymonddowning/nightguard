@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Lukeraymonddowning\Nightshift\Commands;
+namespace Lukeraymonddowning\Nightguard\Commands;
 
 
 use Illuminate\Console\Command;

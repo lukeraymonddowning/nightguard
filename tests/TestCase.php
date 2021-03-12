@@ -1,8 +1,8 @@
 <?php
 
-namespace Lukeraymonddowning\Nightshift\Tests;
+namespace Lukeraymonddowning\Nightguard\Tests;
 
-use Lukeraymonddowning\Nightshift\Providers\NightshiftServiceProvider;
+use Lukeraymonddowning\Nightguard\Providers\NightshiftServiceProvider;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 use Route;
 use Spatie\LaravelRay\RayServiceProvider;

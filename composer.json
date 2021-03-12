@@ -14,12 +14,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Lukeraymonddowning\\Nightshift\\": "src"
+            "Lukeraymonddowning\\Nightguard\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Lukeraymonddowning\\Nightshift\\Tests\\": "tests"
+            "Lukeraymonddowning\\Nightguard\\Tests\\": "tests"
         }
     },
     "license": "MIT",

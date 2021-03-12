@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Lukeraymonddowning\Nightshift;
+namespace Lukeraymonddowning\Nightguard;
 
 
 use Illuminate\Support\Str;

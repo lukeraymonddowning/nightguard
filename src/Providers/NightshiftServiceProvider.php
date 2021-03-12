@@ -1,12 +1,12 @@
 <?php
 
 
-namespace Lukeraymonddowning\Nightshift\Providers;
+namespace Lukeraymonddowning\Nightguard\Providers;
 
 
 use Illuminate\Support\ServiceProvider;
-use Lukeraymonddowning\Nightshift\Commands\CreateAuthCommand;
-use Lukeraymonddowning\Nightshift\Nightguard;
+use Lukeraymonddowning\Nightguard\Commands\CreateAuthCommand;
+use Lukeraymonddowning\Nightguard\Nightguard;
 
 class NightshiftServiceProvider extends ServiceProvider
 {

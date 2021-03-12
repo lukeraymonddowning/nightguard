@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Lukeraymonddowning\Nightshift\Facades;
+namespace Lukeraymonddowning\Nightguard\Facades;
 
 
 use Illuminate\Support\Facades\Facade;
