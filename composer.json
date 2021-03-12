@@ -19,7 +19,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Lukeraymonddowning\\Nightguard\\Tests\\": "tests"
+            "Lukeraymonddowning\\Nightguard\\Tests\\": "tests",
+            "App\\": "mocks/app"
         }
     },
     "license": "MIT",

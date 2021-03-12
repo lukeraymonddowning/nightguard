@@ -19,6 +19,20 @@ abstract class TestCase extends BaseTestCase
     {
         parent::setUp();
         Route::get('login', fn() => abort(403))->name('login');
+        $this->loadMigrationsFrom(__DIR__ . '/../mocks/migrations');
+    }
+
+    protected function getEnvironmentSetUp($app)
+    {
+        $app['config']->set('database.default', 'testbench');
+        $app['config']->set(
+            'database.connections.testbench',
+            [
+                'driver' => 'sqlite',
+                'database' => ':memory:',
+                'prefix' => '',
+            ]
+        );
     }
 
 }
