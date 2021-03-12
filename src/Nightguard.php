@@ -19,6 +19,8 @@ class Nightguard
             "auth.guards.$guard",
             ['driver' => 'session', 'provider' => $this->getProviderName($guard), 'hash' => false]
         );
+
+        return $this;
     }
 
     protected function getProviderName($guard)
