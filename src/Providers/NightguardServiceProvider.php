@@ -8,7 +8,7 @@ use Illuminate\Support\ServiceProvider;
 use Lukeraymonddowning\Nightguard\Commands\CreateAuthCommand;
 use Lukeraymonddowning\Nightguard\Nightguard;
 
-class NightshiftServiceProvider extends ServiceProvider
+class NightguardServiceProvider extends ServiceProvider
 {
 
     public function register()
