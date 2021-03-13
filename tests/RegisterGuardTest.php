@@ -13,6 +13,13 @@ class RegisterGuardTest extends TestCase
     /** @test */
     public function it_can_register_a_new_guard_based_on_a_authenticatable_model()
     {
+        Route::get(
+            'test',
+            function () {
+                return "Hello World";
+            }
+        )->middleware('auth:admin');
+
         Nightguard::create(Administrator::class, 'admin');
 
         $this->get('test')->assertRedirect('login');
@@ -20,16 +27,38 @@ class RegisterGuardTest extends TestCase
         $this->be(new Administrator(), 'admin')->get('test')->assertSee("Hello World");
     }
 
-    protected function setUp(): void
+    /** @test */
+    public function a_guard_can_be_created_passing_only_the_model()
     {
-        parent::setUp();
-
         Route::get(
             'test',
             function () {
                 return "Hello World";
             }
-        )->middleware('auth:admin');
+        )->middleware('auth:administrator');
+
+        Nightguard::create(Administrator::class);
+
+        $this->get('test')->assertRedirect('login');
+        $this->be(new BasicUser)->get('test')->assertRedirect('login');
+        $this->be(new Administrator(), 'administrator')->get('test')->assertSee("Hello World");
+    }
+
+    /** @test */
+    public function it_works_with_complex_model_names()
+    {
+        Route::get(
+            'test',
+            function () {
+                return "Hello World";
+            }
+        )->middleware('auth:complex-user-class');
+
+        Nightguard::create(ComplexUserClass::class);
+
+        $this->get('test')->assertRedirect('login');
+        $this->be(new BasicUser)->get('test')->assertRedirect('login');
+        $this->be(new ComplexUserClass(), 'complex-user-class')->get('test')->assertSee("Hello World");
     }
 
 }
@@ -40,6 +69,11 @@ class Administrator extends User
 }
 
 class BasicUser extends User
+{
+
+}
+
+class ComplexUserClass extends User
 {
 
 }
