@@ -8,8 +8,10 @@ use Illuminate\Support\Str;
 
 class Nightguard
 {
-    public function create($model, $guard)
+    public function create($model, $guard = null)
     {
+        $guard ??= Str::of($model)->classBasename()->singular()->kebab()->__toString();
+
         app()['config']->set(
             "auth.providers.{$this->getProviderName($guard)}",
             ['driver' => 'eloquent', 'model' => $model]

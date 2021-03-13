@@ -50,28 +50,34 @@ With that out of the way, all that's left is to set up the guard. Head in to you
 ```php
 public function boot() 
 {
-    Nightguard::create(App\Models\Administrator::class, 'admin');
+    Nightguard::create(App\Models\Administrator::class);
 }
 ```
 
 ...and voilà! You've successfully registered a gate that only an authenticated
 `Administrator` can access.
 
-If you create a route protected by your new 'admin' gate, it will be protected:
+If you create a route protected by your new 'administrator' gate, it will be protected:
 
 ```php
-Route::get('example-url', fn() => 'Super secret!')->middleware('auth:admin');
+Route::get('example-url', fn() => 'Super secret!')->middleware('auth:administrator');
 ```
+
+> The name of the guard is set automatically based on the class name of the model you pass to
+> the `create` method. The guard name will always be singular and kebab-cased.
 
 ## Nightguard Facade
 
 The `Nightguard` Facade includes the following methods:
 
-### `create($model, $guard)`
+### `create($model, $guard = null)`
 
 This is how you register a new Eloquent guard. The first parameter should be the 
-class name of your eloquent model (eg: `App\Models\Administrator::class`) and
-the second parameter should be the name of the gate you want to use.
+class name of your eloquent model (eg: `App\Models\Administrator::class`).
+
+The second parameter is entirely optional and is only needed if you want to use a
+custom guard name. When omitted, Nightguard will guess the guard name based on your
+model name.
 
 You should place these method calls in the `boot` method of one of your Service
 Providers.
