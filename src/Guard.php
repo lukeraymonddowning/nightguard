@@ -21,17 +21,7 @@ class Guard
             ['driver' => 'eloquent', 'model' => $model]
         );
 
-        $this->configureWeb();
-        $this->configureApi();
-    }
-
-    protected function configureWeb()
-    {
         $this->registerGuard($this->guard, $this->webDriver);
-    }
-
-    protected function configureApi()
-    {
         $this->registerGuard("api-{$this->guard}", $this->apiDriver, ['hash' => false]);
     }
 
