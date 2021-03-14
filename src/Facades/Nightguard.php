@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Facade;
  * @package Lukeraymonddowning\Nightguard\Facades
  *
  * @method static \Lukeraymonddowning\Nightguard\Nightguard create($model, $guard = null)
+ * @method static string|\Lukeraymonddowning\Nightguard\Nightguard webDriver($driver = null)
+ * @method static string|\Lukeraymonddowning\Nightguard\Nightguard apiDriver($driver = null)
+ * @method static \Lukeraymonddowning\Nightguard\Nightguard usingSanctum()
  *
  * @see \Lukeraymonddowning\Nightguard\Nightguard
  */

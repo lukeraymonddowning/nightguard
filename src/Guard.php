@@ -5,11 +5,10 @@ namespace Lukeraymonddowning\Nightguard;
 
 
 use Illuminate\Support\Str;
+use Lukeraymonddowning\Nightguard\Facades\Nightguard as NightguardFacade;
 
 class Guard
 {
-    protected $webDriver = 'session';
-    protected $apiDriver = 'token';
     protected $guard;
 
     public function __construct($model, $guard = null)
@@ -21,8 +20,13 @@ class Guard
             ['driver' => 'eloquent', 'model' => $model]
         );
 
-        $this->registerGuard($this->guard, $this->webDriver);
-        $this->registerGuard("api-{$this->guard}", $this->apiDriver, ['hash' => false]);
+        $this->registerGuard($this->guard, NightguardFacade::webDriver());
+        $this->registerGuard("api-{$this->guard}", NightguardFacade::apiDriver(), ['hash' => false]);
+    }
+
+    protected function getProviderName()
+    {
+        return Str::plural($this->guard);
     }
 
     protected function registerGuard($name, $driver, $options = [])
@@ -31,10 +35,5 @@ class Guard
             "auth.guards.{$name}",
             array_merge(['driver' => $driver, 'provider' => $this->getProviderName()], $options)
         );
-    }
-
-    protected function getProviderName()
-    {
-        return Str::plural($this->guard);
     }
 }
