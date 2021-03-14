@@ -61,6 +61,23 @@ class RegisterGuardTest extends TestCase
         $this->be(new ComplexUserClass(), 'complex-user-class')->get('test')->assertSee("Hello World");
     }
 
+    /** @test */
+    public function it_registers_a_token_auth()
+    {
+        Route::get(
+            'test',
+            function () {
+                return "Hello World";
+            }
+        )->middleware(['api', 'auth:api-administrator']);
+
+        Nightguard::create(\App\Models\Administrator::class);
+
+        $this->getJson('test')->assertUnauthorized();
+        $this->be(new BasicUser)->getJson('test')->assertUnauthorized();
+        $this->be(new Administrator(), 'api-administrator')->getJson('test')->assertSee("Hello World");
+    }
+
 }
 
 class Administrator extends User
