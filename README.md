@@ -79,6 +79,16 @@ In the example of our administrator guard, we would protect our API routes like 
 Route::get('example-api-url', fn() => '{ "json": "data" }')->middleware('auth:api-administrator');
 ```
 
+### Using Nightguard with Laravel Sanctum
+
+If you're using [Laravel Sanctum](https://laravel.com/docs/8.x/sanctum), you can configure Nightguard
+by calling the `usingSanctum` method prior to calling any `create` method, like so:
+
+```php
+Nightguard::usingSanctum();
+Nightguard::create(App\Models\Administrator::class);
+```
+
 ## Nightguard Facade
 
 The `Nightguard` Facade includes the following methods:
