@@ -27,17 +27,19 @@ class Guard
 
     protected function configureWeb()
     {
-        app()['config']->set(
-            "auth.guards.{$this->guard}",
-            ['driver' => $this->webDriver, 'provider' => $this->getProviderName()]
-        );
+        $this->registerGuard($this->guard, $this->webDriver);
     }
 
     protected function configureApi()
     {
+        $this->registerGuard("api-{$this->guard}", $this->apiDriver, ['hash' => false]);
+    }
+
+    protected function registerGuard($name, $driver, $options = [])
+    {
         app()['config']->set(
-            "auth.guards.api-{$this->guard}",
-            ['driver' => $this->apiDriver, 'provider' => $this->getProviderName(), 'hash' => false]
+            "auth.guards.{$name}",
+            array_merge(['driver' => $driver, 'provider' => $this->getProviderName()], $options)
         );
     }
 
