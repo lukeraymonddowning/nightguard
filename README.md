@@ -66,8 +66,31 @@ Route::get('example-url', fn() => 'Super secret!')->middleware('auth:administrat
 > The name of the guard is set automatically based on the class name of the model you pass to
 > the `create` method. The guard name will always be singular and kebab-cased.
 
-## Nightguard Facade
+### Using Nightguard for APIs
 
+When you create a new guard, we register an api guard for you using the `token` driver
+for authenticating your apis. This happens automatically.
+
+The naming convention for these APIs always start with `api-` followed by your guard name.
+
+In the example of our administrator guard, we would protect our API routes like so:
+
+```php
+Route::get('example-api-url', fn() => '{ "json": "data" }')->middleware('auth:api-administrator');
+```
+
+### Using Nightguard with Laravel Sanctum
+
+If you're using [Laravel Sanctum](https://laravel.com/docs/8.x/sanctum), you can configure Nightguard
+by calling the `usingSanctum` method prior to calling any `create` method, like so:
+
+```php
+Nightguard::usingSanctum();
+Nightguard::create(App\Models\Administrator::class);
+```
+
+## Nightguard Facade
+ 
 The `Nightguard` Facade includes the following methods:
 
 ### `create($model, $guard = null)`

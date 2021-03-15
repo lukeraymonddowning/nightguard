@@ -3,30 +3,42 @@
 
 namespace Lukeraymonddowning\Nightguard;
 
-
-use Illuminate\Support\Str;
-
 class Nightguard
 {
+    protected $configuredGuards = [];
+    protected $webDriver = 'session';
+    protected $apiDriver = 'token';
+
     public function create($model, $guard = null)
     {
-        $guard ??= Str::of($model)->classBasename()->singular()->kebab()->__toString();
-
-        app()['config']->set(
-            "auth.providers.{$this->getProviderName($guard)}",
-            ['driver' => 'eloquent', 'model' => $model]
-        );
-
-        app()['config']->set(
-            "auth.guards.$guard",
-            ['driver' => 'session', 'provider' => $this->getProviderName($guard), 'hash' => false]
-        );
-
+        $this->configuredGuards[] = new Guard($model, $guard);
         return $this;
     }
 
-    protected function getProviderName($guard)
+    public function usingSanctum()
     {
-        return Str::plural($guard);
+        return $this
+            ->webDriver('sanctum')
+            ->apiDriver('sanctum');
+    }
+
+    public function webDriver($driver = null)
+    {
+        if ($driver) {
+            $this->webDriver = $driver;
+            return $this;
+        }
+
+        return $this->webDriver;
+    }
+
+    public function apiDriver($driver = null)
+    {
+        if ($driver) {
+            $this->apiDriver = $driver;
+            return $this;
+        }
+
+        return $this->apiDriver;
     }
 }
