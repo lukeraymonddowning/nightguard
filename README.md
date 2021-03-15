@@ -90,7 +90,7 @@ Nightguard::create(App\Models\Administrator::class);
 ```
 
 ## Nightguard Facade
-
+ 
 The `Nightguard` Facade includes the following methods:
 
 ### `create($model, $guard = null)`
